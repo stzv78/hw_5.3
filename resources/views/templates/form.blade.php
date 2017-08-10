@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('content')
-<form method="post" action=" {{ url('/add') }} ">
+<form method="post" action="{{ action('ContactController@store') }} ">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="lastName">Фамилия: *</label>
