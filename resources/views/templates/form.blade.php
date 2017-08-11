@@ -3,7 +3,7 @@
 @section ('pageTitle', 'Новый контакт:')
 
 @section('content')
-<form method="post" action="{{ action('ContactController@store') }} ">
+<form method="post" action="{{ route('contact.store') }} ">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="lastName">Фамилия: *</label>

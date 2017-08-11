@@ -44,8 +44,8 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $contacts = Contact::findOrFail($id);
-        return view('templates.edit', ['contacts' => $contacts]);
+        $contact = Contact::findOrFail($id);
+        return view('templates.edit', ['contact' => $contact]);
     }
 
     /**
@@ -76,8 +76,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)     {
+    public function destroy($id) {
          Contact::destroy($id);
          return redirect('/contact');
     }
+    //public function message($id) {
+    //   dd ("Все нормально работает!!");
+    //}
 }

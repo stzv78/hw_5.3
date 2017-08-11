@@ -22,10 +22,10 @@
                     <td> {{ $contact->lastName }} </td>
                     <td> {{ $contact->address }} </td>
                     <td> {{ $contact->phoneNumber }} </td>
-                    <td> <a class="btn btn-info pull-right" href="{{ url('/contact/' . $contact->id . '/edit') }}">
+                    <td> <a class="btn btn-info pull-right" href="{{ route('contact.edit', ['id' => $contact->id]) }}">
                             <i class="glyphicon glyphicon-pencil"></i></a></td>
                     <td>
-                        <form method="POST" action="{{action('ContactController@destroy',['id'=>$contact->id])}}">
+                        <form method="POST" action="{{ route('contact.destroy',['id'=>$contact->id]) }}">
                             <input type="hidden" name="_method" value="delete"/>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <button type="submit" class="btn btn-danger pull-left" value="">
