@@ -1,5 +1,7 @@
 @extends('index')
 
+@section ('pageTitle', 'Новый контакт:')
+
 @section('content')
 <form method="post" action="{{ action('ContactController@store') }} ">
     {{ csrf_field() }}

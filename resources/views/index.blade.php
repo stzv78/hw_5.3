@@ -4,14 +4,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-    <title> {{ isset ($title) ? $title : "Записная книжка" }} </title>
+    <title>Записная книжка</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
 
-            <h1 class="text-center"> {{ isset ($pageTitle) ? $pageTitle : "Записная книжка" }} </h1>  <hr/>
+            <h1 class="text-center"> @yield('pageTitle') </h1>
+            <hr/>
 
             @yield('content')
 

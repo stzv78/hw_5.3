@@ -12,11 +12,9 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $pageTitle = "Мои контакты";
+    public function index() {
         $contacts = Contact::all();
-        return view('templates.list', compact('title', 'pageTitle', 'contacts'));
+        return view('templates.list',  ['contacts' => $contacts]);
     }
 
     /**
@@ -24,11 +22,8 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $pageTitle = "Новый контакт";
-        return view('templates.form', compact('title', 'pageTitle'));
-
+    public function create() {
+        return view('templates.form');
     }
 
     /**
@@ -38,20 +33,8 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-
         Contact::create($request->all());
         return redirect('/contact');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -60,12 +43,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $pageTitle = "Редактировать контакт";
+    public function edit($id) {
         $contacts = Contact::findOrFail($id);
-
-        return view('templates.edit', compact('title', 'pageTitle', 'contacts'));
+        return view('templates.edit', ['contacts' => $contacts]);
     }
 
     /**
@@ -75,15 +55,19 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+
+    public function update(Request $request, $id) {
         $contact = Contact::findOrFail($id);
-        $contact->lastName = $request->lastName;
-        $contact->firstName = $request->firstName;
-        $contact->address = $request->address;
-        $contact->phoneNumber = $request->phoneNumber;
-        $contact->save();
+        $contact->update($request->all());
         return redirect('/contact');
+
+        //$contact = Contact::findOrFail($id);
+        //$contact->lastName = $request->lastName;
+        //$contact->firstName = $request->firstName;
+        //$contact->address = $request->address;
+        //$contact->phoneNumber = $request->phoneNumber;
+        //$contact->save();
+        //return redirect('/contact');
     }
 
     /**
@@ -92,8 +76,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id)     {
          Contact::destroy($id);
          return redirect('/contact');
     }

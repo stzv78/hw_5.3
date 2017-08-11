@@ -1,8 +1,10 @@
 @extends('index')
-@section('content')
 
+@section ('pageTitle', 'Мои контакты:')
+
+@section('content')
 <table class="table table-responsive table-stripe">
-    <thead>
+<thead>
     <tr>
         <th>Фамилия</th>
         <th>Имя</th>
@@ -12,7 +14,6 @@
         <th></th>
     </tr>
     </thead>
-
     <tbody>
         @if (isset($contacts))
             @foreach($contacts as $contact)

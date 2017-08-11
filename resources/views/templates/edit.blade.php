@@ -1,4 +1,7 @@
 @extends('index')
+
+@section ('pageTitle', 'Редактировать контакт:')
+
 @section('content')
     <form method="POST" action="{{ url('/contact/' . $contacts->id) }}">
         {{ csrf_field() }}
